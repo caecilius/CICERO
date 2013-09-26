@@ -82,6 +82,3 @@ class Adjective(object):
 		elif self._decl == DeclAdj.D3b:
 			fake_noun = Noun(self._nom, self._stem, Decl.D3i, sex)
 		return fake_noun.inflect(case, number)
-
-# test code
-regina = Noun('rēgīna', 'rēgīn', Decl.D1, Sex.F)
