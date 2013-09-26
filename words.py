@@ -1,0 +1,136 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+from inflection import *
+
+class Decl(object):
+	D1, D2, D3, D3i, D4, D5 = 1, 2, 3, 6, 4, 5
+
+class DeclAdj(object):
+	D12, D3a, D3b = 1, 2, 3
+
+class Noun(object):
+	ENDINGS = {
+			1 : {
+				Number.Sg : {
+					Case.Gen : 'ae',
+					Case.Dat : 'ae',
+					Case.Acc : 'am',
+					Case.Abl : 'ā',
+					},
+				Number.Pl : {
+					Case.Nom : 'ae',
+					Case.Gen : 'ārum',
+					Case.Dat : 'īs',
+					Case.Acc : 'ās',
+					Case.Abl : 'īs',
+					},
+				},
+			2 : {
+				Sex.M : {
+					Number.Sg : {
+						Case.Gen : 'ī',
+						Case.Dat : 'ō',
+						Case.Acc : 'um',
+						Case.Abl : 'ō',
+						},
+					Number.Pl : {
+						Case.Nom : 'ī',
+						Case.Gen : 'ōrum',
+						Case.Dat : 'īs',
+						Case.Acc : 'ōs',
+						Case.Abl : 'īs',
+						},
+					},
+				Sex.N : {
+					Number.Sg : {
+						Case.Gen : 'ī',
+						Case.Dat : 'ō',
+						Case.Acc : 'um',
+						Case.Abl : 'ō',
+						},
+					Number.Pl : {
+						Case.Nom : 'a',
+						Case.Gen : 'ōrum',
+						Case.Dat : 'īs',
+						Case.Acc : 'ōs',
+						Case.Abl : 'īs',
+						}
+					},
+				}
+			}
+
+	def __init__(self, nom, stem, decl, sex):
+		self._nom = nom
+		self._stem = stem
+		self._decl = decl
+		self._sex = sex
+
+	def sex(self):
+		return self._sex
+
+	def inflect(self, case, number):
+		if number == Number.Sg and case == Case.Nom:
+			return self._nom
+		elif case == Case.Voc:
+			if self._decl == Decl.D2 and self._sex == Sex.M:
+				if self._nom.endswith('ius'):
+					return self._stem + 'ī'
+				elif self._nom.endswith('us'):
+					return self._stem + 'e'
+				else:
+					return self._nom
+			else:
+				return self._nom
+		elif self._nom == 'vīs' and number == Number.Sg: 	# irregular
+			return {
+					Case.Gen : 'virium',
+					Case.Dat : 'viribus',
+					Case.Acc : 'vim',
+					Case.Abl : 'vī'
+					}[case]
+		elif self._decl == Decl.D1:
+			return self._stem + self.ENDINGS[1][number][case]
+		elif self._decl == Decl.D2:
+			return self._stem + self.ENDINGS[2][self._sex][number][case]
+		elif self._decl == Decl.D3:
+			return self._stem + self.ENDINGS[3][self._sex][number][case]
+		elif self._decl == Decl.D3i:
+			if number == Number.Pl and case == Case.Gen:
+				return self._stem + 'ium'
+			elif self._sex == Sex.N and number == Number.Sg and case == Case.Abl:
+				return self._stem + 'ī'
+			else:
+				return self._stem + self.ENDINGS[3][self._sex][number][case]
+		elif self._decl == Decl.D4:
+			return self._stem + self.ENDINGS[4][self._sex][number][case]
+		elif self._decl == Decl.D5:
+			return self._stem + self.ENDINGS[5][number][case]
+
+class Adjective(object):
+	def __init__(self, nom, stem, decl):
+		self._nom = nom
+		self._stem = stem
+		self._decl = decl
+
+	def inflect(self, case, number, sex):
+		if self._decl == DeclAdj.D12:
+			if sex == Sex.M:
+				fake_noun = Noun(self._nom, self._stem, Decl.D2, Sex.M)
+			elif sex == Sex.F:
+				fake_noun = Noun(self._stem + 'a', self._stem, Decl.D1, Sex.F)
+			elif sex == Sex.N:
+				fake_noun = Noun(self._stem + 'um', self._stem, Decl.D2, Sex.N)
+		elif self._decl == DeclAdj.D3a:
+			if sex == Sex.M:
+				fake_noun = Noun(self._nom, self._stem, Decl.D3i, Sex.M)
+			elif sex == Sex.F:
+				fake_noun = Noun(self._stem + 'is', self._stem, Decl.D3i, Sex.F)
+			elif sex == Sex.N:
+				fake_noun = Noun(self._stem + 'e', self._stem, Decl.D3i, Sex.N)
+		elif self._decl == DeclAdj.D3b:
+			fake_noun = Noun(self._nom, self._stem, Decl.D3i, sex)
+		return fake_noun.inflect(case, number)
+
+# test code
+regina = Noun('rēgīna', 'rēgīn', Decl.D1, Sex.F)
