@@ -1,7 +1,7 @@
 CICERO
 ======
 
-_The **C**lassicist's **I**ntelligent **C**omputer-**E**mulated **R**oman **O**rator._
+_The Classicist's Intelligent Computer-Emulated Roman Orator._
 
 CICERO fabricates meaningless but syntactically correct Latin text.
 
