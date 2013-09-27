@@ -16,3 +16,15 @@ class Sex:
 class Number:
 	Sg, Pl = 'Singular', 'Plural'
 	Numbers = [Sg, Pl]
+
+class Tense:
+	Pres, Impf, Fut, Perf, Plup, Futp = 'Pres', 'Impf', 'Fut', 'Perf', 'Plup', 'Futp'
+	Tenses = [Pres, Impf, Fut, Perf, Plup, Futp]
+
+class Mood:
+	Indic, Subj, Imp = 'Indic', 'Subj', 'Imp'
+	Moods = [Indic, Subj, Imp]
+
+class Voice:
+	Act, Pas = 'Act', 'Pas'
+	Voices = [Act, Pas]
