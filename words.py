@@ -12,13 +12,16 @@ class DeclAdj(object):
 
 class Noun(object):
 	def __init__(self, nom, stem, decl, sex):
-		self._nom = nom
-		self._stem = stem
-		self._decl = decl
-		self._sex = sex
+            self._nom = nom
+            self._stem = stem
+            self._decl = decl
+            self._sex = sex
+
+        def nom(self):
+            return self._nom
 
 	def sex(self):
-		return self._sex
+            return self._sex
 
 	def inflect(self, case, number):
 		if case == Case.Acc and self._sex == Sex.N:

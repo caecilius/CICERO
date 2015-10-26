@@ -29,30 +29,43 @@ PERSONAL_NOUNS = [
 		Noun('poēta', 'poēt', Decl.D1, Sex.M),
 		Noun('rēgīna', 'rēgīn', Decl.D1, Sex.F),
 
-		Noun('fīlius', 'fīli', Decl.D2, Sex.M),
 		Noun('vir', 'vir', Decl.D2, Sex.M),
 		Noun('bellum', 'bell', Decl.D2, Sex.N),
+                Noun('deus', 'de', Decl.D2, Sex.M),
 
 		Noun('frāter', 'frātr', Decl.D3, Sex.M),
 		Noun('soror', 'soror', Decl.D3, Sex.F),
+                Noun('homō', 'homin', Decl.D3, Sex.M),
+                Noun('rēx', 'rēg', Decl.D3, Sex.M),
 		]
 
 THING_NOUNS = [
 		Noun('īnsula', 'īnsul', Decl.D1, Sex.F),
 		Noun('pecūnia', 'pecūni', Decl.D1, Sex.F),
 		Noun('viā', 'vi', Decl.D1, Sex.F),
+                Noun('terra', 'terr', Decl.D1, Sex.F),
 
 		Noun('līber', 'lībr', Decl.D2, Sex.M),
 
 		Noun('animal', 'animal', Decl.D3, Sex.N),
 		Noun('corpus', 'corpor', Decl.D3, Sex.N),
+                Noun('urbs', 'urb', Decl.D3, Sex.F),
+
+                Noun('manus', 'man', Decl.D4, Sex.F),
 		]
 
 ABSTRACT_NOUNS = [
 		Noun('anima', 'anim', Decl.D1, Sex.F),
 		Noun('fāma', 'fām', Decl.D1, Sex.F),
+                Noun('vīta', 'vīt', Decl.D1, Sex.F),
+                Noun('causa', 'caus', Decl.D1, Sex.F),
 
-		Noun('vīs', 'vir', Decl.D3i, Sex.F),
+                Noun('animus', 'anim', Decl.D2, Sex.M),
+
+                Noun('pars', 'part', Decl.D3, Sex.F),
+                Noun('tempus', 'tempor', Decl.D3, Sex.N),
+                Noun('mors', 'mort', Decl.D3, Sex.F),
+                Noun('vīs', 'vir', Decl.D3, Sex.F),
 
 		Noun('senātus', 'senāt', Decl.D4, Sex.M),
 
@@ -71,6 +84,7 @@ GEOGRAPHIC_NOUNS = [
 PROPER_NOUNS = [
 		Noun('Catilina', 'Catilin', Decl.D1, Sex.M),
 		Noun('Iūlia', 'Iūli', Decl.D1, Sex.F),
+                Noun('Sulla', 'Sull', Decl.D1, Sex.M),
 
 		Noun('Mārcus', 'Mārc', Decl.D2, Sex.M),
 		Noun('Quintus', 'Quint', Decl.D2, Sex.M),
@@ -92,20 +106,39 @@ PERSONAL_ADJS = [
 		Adjective('laetus', 'laet', DeclAdj.D12),
 		Adjective('cārus', 'cār', DeclAdj.D12),
 		Adjective('miser', 'miser', DeclAdj.D12),
+                Adjective('saevus', 'saev', DeclAdj.D12),
+                Adjective('fortis', 'fort', DeclAdj.D3b),
+                Adjective('dīgnus', 'dīgn', DeclAdj.D12),
+                Adjective('fēlix', 'fēlic', DeclAdj.D3b),
 		]
 
 TANGIBLE_ADJS = [
 		Adjective('altus', 'alt', DeclAdj.D12),
 		Adjective('ūmidus', 'ūmid', DeclAdj.D12),
+                Adjective('gravis', 'grav', DeclAdj.D3b),
+                Adjective('longus', 'long', DeclAdj.D12),
+                Adjective('levis', 'lev', DeclAdj.D3b),
 		]
 
 IMPERSONAL_ADJS = [
 		Adjective('acidus', 'acid', DeclAdj.D12),
+                Adjective('ferus', 'fer', DeclAdj.D12),
+                Adjective('dīrus', 'dīr', DeclAdj.D12),
+                Adjective('hūmānus', 'hūmān', DeclAdj.D12),
 		]
 
 COMMON_ADJS = [
 		Adjective('magnus', 'magn', DeclAdj.D12),
 		Adjective('paulus', 'paul', DeclAdj.D12),
+                Adjective('omnis', 'omn', DeclAdj.D3b),
+                Adjective('multus', 'mult', DeclAdj.D12),
+                Adjective('bonus', 'bon', DeclAdj.D12),
+                Adjective('prīmus', 'prīm', DeclAdj.D12),
+                Adjective('tantus', 'tant', DeclAdj.D12),
+                Adjective('novus', 'nov', DeclAdj.D12),
+                Adjective('parvus', 'parv', DeclAdj.D12),
+                Adjective('cūnctus', 'cūnct', DeclAdj.D12),
+                Adjective('vetus', 'veter', DeclAdj.D3b),
 		]
 
 ADJS = {
